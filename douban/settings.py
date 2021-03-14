@@ -6,6 +6,11 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+from redis import Redis
+from environs import Env
+
+env = Env()
+env.read_env()
 
 BOT_NAME = 'douban'
 
@@ -50,9 +55,9 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   # 'douban.middlewares.DoubanDownloaderMiddleware': 543,
-   'douban.middlewares.MyUserAgentMiddleware': 400,
-   # 'douban.middlewares.MyHttpProxyMiddleware': 750,
+	# 'douban.middlewares.DoubanDownloaderMiddleware': 543,
+	'douban.middlewares.MyUserAgentMiddleware': 400,
+	# 'douban.middlewares.MyHttpProxyMiddleware': 750,
 }
 
 # Enable or disable extensions
@@ -87,3 +92,61 @@ DOWNLOADER_MIDDLEWARES = {
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+
+RedisDB = env.int("RedisDB", 5)
+RedisHOST = env.str("RedisHost", 'host')
+RedisPORT = env.int("RedisPort", 'port')
+RedisPASSWD = env.str("PASSWD", 'password')
+# connection Redis
+redisConnection = Redis(
+	host=RedisHOST,
+	port=RedisPORT,
+	password=RedisPASSWD,
+	db=RedisDB,
+	health_check_interval=30)
+
+# test example
+# conn.set("a", 'b')
+# print(conn.get('a'))
+# conn.lpush("GuShiWen:start_urls", "http://gushiwen.org")
+# print(conn.keys('*'))
+# print(conn.lrange("GuShiWen:start_urls", 0, 0))
+# Scrapy-Redis settings
+"""
+Settings
+--------
+SCHEDULER_PERSIST : bool (default: False)
+    Whether to persist or clear redis queue.
+SCHEDULER_FLUSH_ON_START : bool (default: False)
+    Whether to flush redis queue on start.
+SCHEDULER_IDLE_BEFORE_CLOSE : int (default: 0)
+    How many seconds to wait before closing if no message is received.
+SCHEDULER_QUEUE_KEY : str
+    Scheduler redis key.
+SCHEDULER_QUEUE_CLASS : str
+    Scheduler queue class.
+SCHEDULER_DUPEFILTER_KEY : str
+    Scheduler dupefilter redis key.
+SCHEDULER_DUPEFILTER_CLASS : str
+    Scheduler dupefilter class.
+SCHEDULER_SERIALIZER : str
+    Scheduler serializer.
+"""
+REDIS_PARAMS = dict(
+	host=RedisHOST,
+	port=RedisPORT,
+	password=RedisPASSWD,
+	db=RedisDB)
+# Redis SCHEDULER(Distributed)
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+REDIS_START_URLS_AS_SET = True
+# Whether to clear the queue after crawling（default: True）
+SCHEDULER_PERSIST = True
+
+# Schedule requests using a priority queue. (default)
+# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.FifoQueue'
+# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.LifoQueue'
+SCHEDULER_FLUSH_ON_START = True

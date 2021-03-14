@@ -4,7 +4,7 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-from douban.tools import ua, proxyKey
+from douban.tools import ua
 
 
 # useful for handling different item types with a single interface

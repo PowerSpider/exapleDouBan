@@ -1,7 +1,8 @@
 import scrapy
+from scrapy_redis.spiders import RedisSpider
 
 
-class DoubanspiderSpider(scrapy.Spider):
+class DoubanspiderSpider(RedisSpider):
 	name = 'doubanspider'
 	allowed_domains = ['douban.com']
 	start_urls = ['https://book.douban.com/tag/?view=cloud']
