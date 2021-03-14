@@ -1,0 +1,75 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="1077" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JSHint" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="20">
+            <item index="0" class="java.lang.String" itemvalue="environs" />
+            <item index="1" class="java.lang.String" itemvalue="aiohttp" />
+            <item index="2" class="java.lang.String" itemvalue="lxml" />
+            <item index="3" class="java.lang.String" itemvalue="requests" />
+            <item index="4" class="java.lang.String" itemvalue="cchardet" />
+            <item index="5" class="java.lang.String" itemvalue="loguru" />
+            <item index="6" class="java.lang.String" itemvalue="pyquery" />
+            <item index="7" class="java.lang.String" itemvalue="supervisor" />
+            <item index="8" class="java.lang.String" itemvalue="redis" />
+            <item index="9" class="java.lang.String" itemvalue="Flask" />
+            <item index="10" class="java.lang.String" itemvalue="attrs" />
+            <item index="11" class="java.lang.String" itemvalue="asyncio" />
+            <item index="12" class="java.lang.String" itemvalue="Scrapy" />
+            <item index="13" class="java.lang.String" itemvalue="scrapy-splash" />
+            <item index="14" class="java.lang.String" itemvalue="DBUtils" />
+            <item index="15" class="java.lang.String" itemvalue="PyMySQL" />
+            <item index="16" class="java.lang.String" itemvalue="scrapy-redisa" />
+            <item index="17" class="java.lang.String" itemvalue="scrapy-redis" />
+            <item index="18" class="java.lang.String" itemvalue="retrying" />
+            <item index="19" class="java.lang.String" itemvalue="twisted" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+          <option value="E128" />
+          <option value="E101" />
+          <option value="E266" />
+          <option value="W292" />
+          <option value="W191" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N802" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="typing.AsyncGenerator.__await__" />
+          <option value="RenderingCrawler.pipelines.GFKDReferPipeline.*" />
+          <option value="twisted.internet.reactor.stop" />
+          <option value="twisted.internet.reactor.run" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="SqlResolveInspection" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="Stylelint" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>
